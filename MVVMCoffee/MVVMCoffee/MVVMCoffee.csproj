@@ -6,6 +6,12 @@
     <Company>julianocustodio.com</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/juucustodio/MVVMCoffee/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/juucustodio/MVVMCoffee/blob/master/README.md</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/juucustodio/MVVMCoffee</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/juucustodio/MVVMCoffee/master/Resources/MVVMCoffee.png</PackageIconUrl>
+    <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
+    <Description>Nuget package with base class to work with MVVM (Model View ViewModel) without dependence of framework. Save time with this library and enjoy to drink coffee. ☕</Description>
   </PropertyGroup>
 
   <ItemGroup>
