@@ -7,13 +7,13 @@ namespace MVVMCoffee.ViewModels
     public class BaseViewModel : BaseModel
     {
 
-        private bool _ocupado;
-        public bool Ocupado
+        private bool _busy;
+        public bool Busy
         {
-            get { return _ocupado; }
+            get { return _busy; }
             set
             {
-                SetProperty(ref _ocupado, value);
+                SetProperty(ref _busy, value);
             }
         }
 

@@ -10,49 +10,53 @@ namespace MVVMCoffee.Services
         static Lazy<NavigationService> LazyNavi = new Lazy<NavigationService>(() => new NavigationService());
         public static NavigationService Current => LazyNavi.Value;
 
-
         private Page GetViewModelLocator<TViewModel>(params object[] args) where TViewModel : BaseViewModel
         {
-            var viewModelType = typeof(TViewModel);
-            var viewModelTypeName = viewModelType.Name;
-            var viewModelWordLength = "ViewModel".Length;
+            Type viewModelType = typeof(TViewModel);
+            string viewModelTypeName = viewModelType.Name;
+            int viewModelWordLength = "ViewModel".Length;
 
-            var namespaceName = typeof(BaseViewModel).AssemblyQualifiedName.Split('.')[0];
+            string[] namespaceSplit = typeof(TViewModel).AssemblyQualifiedName.Split('.');
+            string namespaceName = namespaceSplit[0];
 
-            var viewTypeName = $"{ namespaceName}.Views.{ viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
-            var viewType = Type.GetType(viewTypeName);
+            int x = 1;
+            while (namespaceSplit[x] != "ViewModels")
+            {
+                namespaceName += "." + namespaceSplit[x];
+                x++;
+            }
 
-            var page = Activator.CreateInstance(viewType) as Page;
+            string viewTypeName = $"{namespaceName}.Views.{viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
+
+            Type viewType = Type.GetType(viewTypeName + "," + namespaceName + ".dll");
+
+            Page page = Activator.CreateInstance(viewType) as Page;
 
             var viewModel = Activator.CreateInstance(viewModelType, args);
+
             if (page != null)
-            {
                 page.BindingContext = viewModel;
-            }
 
             return page;
         }
 
         public async Task PushAsync<TViewModel>(bool modal = false, params object[] args) where TViewModel : BaseViewModel
         {
-            var page = GetViewModelLocator<TViewModel>(args);
+            Page page = GetViewModelLocator<TViewModel>(args);
 
             if (modal)
                 await Application.Current.MainPage.Navigation.PushModalAsync(page);
             else
                 await Application.Current.MainPage.Navigation.PushAsync(page);
 
-
             await (page.BindingContext as BaseViewModel).LoadAsync(args);
         }
 
         public async Task SetRootAsync<TViewModel>(params object[] args) where TViewModel : BaseViewModel
         {
-            var page = GetViewModelLocator<TViewModel>(args);
-
+            Page page = GetViewModelLocator<TViewModel>(args);
 
             Application.Current.MainPage = new NavigationPage(page);
-
 
             await (page.BindingContext as BaseViewModel).LoadAsync(args);
         }
@@ -62,9 +66,5 @@ namespace MVVMCoffee.Services
 
         public async Task PopToRootAsync() =>
           await Application.Current.MainPage.Navigation.PopToRootAsync();
-
-
-
     }
-
 }
