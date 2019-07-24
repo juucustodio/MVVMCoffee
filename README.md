@@ -11,7 +11,7 @@ Nuget package with base class to work with MVVM (Model View ViewModel) without d
 
 |Name|Info|
 | ------------------- | :------------------: |
-|MVVMCoffee|[![NuGet](https://img.shields.io/badge/nuget-1.0.0-blue.svg)](https://www.nuget.org/packages/MVVMCoffee/)|
+|MVVMCoffee|[![NuGet](https://img.shields.io/badge/nuget-1.0.1-blue.svg)](https://www.nuget.org/packages/MVVMCoffee/)|
 
 
 
