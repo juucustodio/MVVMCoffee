@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sample.Views.FormPage"
+             Title="{Binding TitlePage}">
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            <StackLayout>
+                <Label Text="Example of Customer object for demonstrate using interface INotifyPropertyChanged"
+                       HorizontalTextAlignment="Center"/>
+                <Entry Text="{Binding Customer.Name}"/>
+                <Label Text="{Binding Customer.Name}"/>
+            </StackLayout>
+            
+            <StackLayout Padding="0,50">
+                <Button Text="PopAsync" BackgroundColor="#F3F3F3"
+                        Command="{Binding PopAsyncCommand}"/>
+                <Button Text="PopToRootAsync" BackgroundColor="#F3F3F3"
+                        Command="{Binding PopToRootAsyncCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
