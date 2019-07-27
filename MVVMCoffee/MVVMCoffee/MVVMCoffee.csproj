@@ -10,8 +10,13 @@
     <PackageProjectUrl>https://github.com/juucustodio/MVVMCoffee/blob/master/README.md</PackageProjectUrl>
     <RepositoryUrl>https://github.com/juucustodio/MVVMCoffee</RepositoryUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/juucustodio/MVVMCoffee/master/Resources/MVVMCoffee.png</PackageIconUrl>
-    <PackageReleaseNotes>Initial Version</PackageReleaseNotes>
+    <PackageReleaseNotes>Refactored navigation methods</PackageReleaseNotes>
     <Description>Nuget package with base class to work with MVVM (Model View ViewModel) without dependence of framework. Save time with this library and enjoy to drink coffee. ☕</Description>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>1.0.1</PackageVersion>
+    <Owners>Juliano Custodio</Owners>
+    <PackageTags>MVVM</PackageTags>
+    <Title>MVVMCoffee</Title>
   </PropertyGroup>
 
   <ItemGroup>
