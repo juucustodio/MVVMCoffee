@@ -43,13 +43,16 @@ namespace MVVMCoffee.Services
         public async Task PushAsync<TViewModel>(bool modal = false, params object[] args) where TViewModel : BaseViewModel
         {
             Page page = GetViewModelLocator<TViewModel>(args);
+            int count = Application.Current.MainPage.Navigation.NavigationStack.Count -1;
+            if (Application.Current.MainPage.Navigation.NavigationStack[count].GetType().ToString() != page.GetType().ToString())
+            {
+                if (modal)
+                    await Application.Current.MainPage.Navigation.PushModalAsync(page);
+                else
+                    await Application.Current.MainPage.Navigation.PushAsync(page);
 
-            if (modal)
-                await Application.Current.MainPage.Navigation.PushModalAsync(page);
-            else
-                await Application.Current.MainPage.Navigation.PushAsync(page);
-
-            await (page.BindingContext as BaseViewModel).LoadAsync(args);
+                await (page.BindingContext as BaseViewModel).LoadAsync(args);
+            }
         }
 
         public async Task SetRootAsync<TViewModel>(params object[] args) where TViewModel : BaseViewModel
@@ -61,9 +64,14 @@ namespace MVVMCoffee.Services
             await (page.BindingContext as BaseViewModel).LoadAsync(args);
         }
 
-        public async Task PopAsync() =>
-           await Application.Current.MainPage.Navigation.PopAsync();
-
+        public async Task PopAsync(bool modal = false)
+        {
+            if(modal)
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+            else
+                await Application.Current.MainPage.Navigation.PopAsync();
+        }
+        
         public async Task PopToRootAsync() =>
           await Application.Current.MainPage.Navigation.PopToRootAsync();
     }

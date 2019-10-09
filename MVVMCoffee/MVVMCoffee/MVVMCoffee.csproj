@@ -13,7 +13,7 @@
     <PackageReleaseNotes>Refactored navigation methods</PackageReleaseNotes>
     <Description>Nuget package with base class to work with MVVM (Model View ViewModel) without dependence of framework. Save time with this library and enjoy to drink coffee. ☕</Description>
     <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.1.0</PackageVersion>
     <Owners>Juliano Custodio</Owners>
     <PackageTags>MVVM</PackageTags>
     <Title>MVVMCoffee</Title>

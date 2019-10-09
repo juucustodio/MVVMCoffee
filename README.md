@@ -11,7 +11,7 @@ Nuget package with base class to work with MVVM (Model View ViewModel) without d
 
 |Name|Info|
 | ------------------- | :------------------: |
-|MVVMCoffee|[![NuGet](https://img.shields.io/badge/nuget-1.0.1-blue.svg)](https://www.nuget.org/packages/MVVMCoffee/)|
+|MVVMCoffee|[![NuGet](https://img.shields.io/badge/nuget-1.1.0-blue.svg)](https://www.nuget.org/packages/MVVMCoffee/)|
 
 
 
@@ -70,6 +70,11 @@ PushAsync
 await Navigation.PushAsync<CustomerViewModel>(false);
 ```
 
+PushModalAsync
+```chsarp
+await Navigation.PushAsync<CustomerViewModel>(true);
+```
+
 
 SetRootAsync
 ```chsarp
@@ -81,10 +86,14 @@ await Navigation.SetRootAsync<CustomerViewModel>();
 PopAsync
 
 ```chsarp
-await Navigation.PopAsync();
+await Navigation.PopAsync(false);
 ```
 
+PopModalAsync
 
+```chsarp
+await Navigation.PopAsync(true);
+```
 
 PopToRootAsync
 
